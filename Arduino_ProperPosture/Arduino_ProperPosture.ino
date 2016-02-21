@@ -31,7 +31,7 @@ const int TYP_MAX = 705;         // NEED TO FIND
 
 // Range for Good Posture
 const int maxAcceptable = 105;   // NEED TO FIND
-const int minAcceptable = 90;   // NEED TO FIND
+const int minAcceptable = 98;   // NEED TO FIND
 
 // Delay messages
 const int WAIT = 1000;
