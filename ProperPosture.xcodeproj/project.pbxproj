@@ -20,6 +20,7 @@
 		E12DDC9E1C78DAA7001232A2 /* Posture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12DDC9C1C78DAA7001232A2 /* Posture+CoreDataProperties.swift */; };
 		E12DDC9F1C78DAA7001232A2 /* Posture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12DDC9D1C78DAA7001232A2 /* Posture.swift */; };
 		E1A4388C1C79E64C00C8C389 /* ProperPosture.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E1A4388B1C79E64C00C8C389 /* ProperPosture.entitlements */; };
+		E1A438901C7A145300C8C389 /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4388F1C7A145300C8C389 /* BarGraph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +59,7 @@
 		E1A4387C1C799C0100C8C389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A4387E1C799C0100C8C389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A4388B1C79E64C00C8C389 /* ProperPosture.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ProperPosture.entitlements; sourceTree = "<group>"; };
+		E1A4388F1C7A145300C8C389 /* BarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				E12DDC981C7851BD001232A2 /* Service.swift */,
 				E1017FA61C7927CC00AAFB9B /* CoreData.swift */,
 				E12DDC9A1C785BF2001232A2 /* MainDisplayViewController.swift */,
+				E1A4388F1C7A145300C8C389 /* BarGraph.swift */,
 				E1017FC61C7963F100AAFB9B /* Constants.swift */,
 				E12DDC851C7845E7001232A2 /* Main.storyboard */,
 				E12DDC8B1C7845E7001232A2 /* Assets.xcassets */,
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A438901C7A145300C8C389 /* BarGraph.swift in Sources */,
 				E12DDC971C784783001232A2 /* Discover.swift in Sources */,
 				E12DDC9F1C78DAA7001232A2 /* Posture.swift in Sources */,
 				E12DDC9B1C785BF2001232A2 /* MainDisplayViewController.swift in Sources */,
