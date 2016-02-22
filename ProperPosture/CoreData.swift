@@ -17,7 +17,6 @@ class CoreData {
     // Managed Object Context
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    
     // MARK: Task core data Methods
     
     // MARK: Add Task
@@ -37,6 +36,9 @@ class CoreData {
             fatalError("Failure to save task: \(dpToAdd) - error: \(error)")
         }
     } // end saveTask method
+    
+    
+    
     
     
     // MARK: Update Task
@@ -60,6 +62,9 @@ class CoreData {
     
     
     
+    
+    
+    
     // MARK: Delete a Task
     func deleteDataPoint(dataPointToDelete: Posture) {
         // delete
@@ -73,6 +78,11 @@ class CoreData {
             print("Failure to delete task: \(dataPointToDelete) - error: \(deleteError.localizedDescription)")
         }
     } // end deleteTask method
+    
+    
+    
+    
+    
     
     
     // MARK: Get All Tasks
@@ -93,6 +103,10 @@ class CoreData {
         return fetchedTasks
     } // end getAllTasks method
     
+    
+    
+    
+    // MARK: Print all CD to terminal
     func printAllCD() {
         let temp = getAllDataPoints()
         
@@ -105,6 +119,9 @@ class CoreData {
         }
         print("-----------------------------")
     }
+    
+    
+    
     
     // MARK: Delete all Tasks
     func deleteAllTasks() {

@@ -175,11 +175,51 @@ class Service: NSObject, CBPeripheralDelegate {
         }
     }
     
-    func readPosture() -> Int32 {
+    func readPosture() -> (String, Int32) {
         
-        if (bad) {return -100}
-        else {return good}
+        if (bad) {
+            return ("BAD_DATA", -1)
+        } else {
+            return (format(good), good)
+        }
     }
+    
+    
+    
+    
+    func format(seconds: Int32) ->String {
+        
+        let (h, m, s) = getHourMinSec(seconds)
+        var hour = ""; var min = ""; var sec = ""
+        if h < 10 {
+            hour = "0" + String(h)
+        } else {
+            hour = String(h)
+        }
+        
+        if m < 10 {
+            min = "0" + String(m)
+        } else {
+            min = String(m)
+        }
+        
+        if s < 10 {
+            sec = "0" + String(s)
+        } else {
+            sec = String(s)
+        }
+        
+        let returnVal = hour + ":" + min + ":" + sec
+        
+        return returnVal
+    }
+    
+    func getHourMinSec(sec: Int32) ->(Int32, Int32, Int32) {
+        return (sec / Int32(3600), (sec % 3600) / 60, (sec % 3600) % 60)
+    }
+    
+    
+    
     
    /*
     func sendData(mesg: UInt8) {

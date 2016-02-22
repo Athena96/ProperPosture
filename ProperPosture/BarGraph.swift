@@ -1,22 +1,27 @@
-//
-//  BarGraph.swift
-//  ProperPosture
-//
-//  Created by Jared Franzone on 2/21/16.
-//  Copyright © 2016 Jared Franzone. All rights reserved.
-//
+
+// Author:    Jared Franzone
+// File:      BarGraph.swift
+// Version:   1.0
+// Purpose:   (Post) Hackillinois
+// History:
+//            1.0 initial version
 
 import UIKit
 import Foundation
 
 class BarGraph: NSObject {
     
+    // MARK: Hidden Class 
+    
     class Bar: NSObject {
+        
         // MARK: - Member Vars
+        
         var hourLabel: UILabel?
         var bar: UIView?
         
         // MARK: - Constructor
+        
         init(x:Int, hours: Int, p: Double) {
             
             // Make the Bar
@@ -38,7 +43,7 @@ class BarGraph: NSObject {
             bar!.backgroundColor = color
 
             
-            // Make the hour label
+            // Make the "hour" label
             let lblX = bar!.frame.midX
             let lblY = bar!.frame.minY - 13
             hourLabel = UILabel(frame: CGRectMake(lblX, lblY, CGFloat(39), CGFloat(29)))
@@ -48,6 +53,9 @@ class BarGraph: NSObject {
             hourLabel!.font = UIFont(name: "HelveticaNeue", size: CGFloat(20))
             hourLabel!.text = String(hours)
         }
+        
+        
+        // MARK: - Helper Functions
         
         func draw(vc: UIViewController) {
             if let hl = hourLabel {
@@ -63,22 +71,30 @@ class BarGraph: NSObject {
         
     } // end Bar class
     
-    // Fixed Size Array
+    
+    // MARK: - Bar Graph Class
+    
+    // Array of bars
     var arrayOfDataPoints = [Bar]()
     
-    func add(dp: Posture)
-    {
+    // Add bars to graph
+    func add(dp: Posture) {
         
+        // We only want 7 bars (7 days)
+        if (arrayOfDataPoints.count > 7) {
+            print("too big")
+            return
+        }
+        
+        // Calculate measurements for the bar we are
         let inval = Double(dp.duration!)
         let perc: Double = inval / 57600.0
-        let newH = (301 * perc)
-        let newHCG = (newH <= 1) ? 3 : Int(newH)
-        
-        let day = NSCalendar.currentCalendar().components(NSCalendarUnit.Weekday, fromDate: dp.date!).weekday
+        let dayToDraw = NSCalendar.currentCalendar().components(NSCalendarUnit.Weekday, fromDate: dp.date!).weekday
         
         var bar: Bar?
         
-        switch day {
+        // Switch statement do we draw the bar in the correct spot
+        switch dayToDraw {
             
         case Constants.day.Sunday:
             bar = Bar(x: 20, hours: Int(inval/60/60), p: perc)
@@ -111,57 +127,23 @@ class BarGraph: NSObject {
             
         }
         
-        arrayOfDataPoints.append(bar!)
+        if let barDP = bar {
+            arrayOfDataPoints.append(barDP)
+        } else { print("error in: add") }
     }
     
-    func drawGraph(vc: UIViewController)
-    {
-        if (arrayOfDataPoints.count <= 7)
-        {
-            
-            for bar in arrayOfDataPoints
-            {
-                bar.draw(vc)
-            }
-            
-        }
-        else
-        {
-            print("error")
+    // Draw the Graph you have made
+    func drawGraph(vc: UIViewController) {
+        for bar in arrayOfDataPoints {
+            bar.draw(vc)
         }
     }
     
     // Reset the Graph
-    func resetGraph()
-    {
-        for bar in arrayOfDataPoints
-        {
+    func resetGraph() {
+        for bar in arrayOfDataPoints {
             bar.remove()
         }
-    }
-    
-    
-    func demo(vc: UIViewController) {
-        let b1 = Bar(x: 20, hours: 11, p: 0.9)
-        b1.draw(vc)
-        
-        let b2 = Bar(x: 73, hours: 10, p: 0.3)
-        b2.draw(vc)
-        
-        let b3 = Bar(x: 133, hours: 22, p: 0.5)
-        b3.draw(vc)
-        
-        let b4 = Bar(x: 187, hours: 12, p: 0.1)
-        b4.draw(vc)
-        
-        let b5 = Bar(x: 242, hours: 4, p: 0.75)
-        b5.draw(vc)
-        
-        let b6 = Bar(x: 298, hours: 7, p: 0.25)
-        b6.draw(vc)
-        
-        let b7 = Bar(x: 353, hours: 9, p: 1.0)
-        b7.draw(vc)
     }
     
 } // end Graph Class
